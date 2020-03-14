@@ -1,16 +1,27 @@
-# 初めかた
+# Compagnoについて
 
-## インストールモジュール
+## 最初に
+コミュニケーションを加速させ、業務を円滑に進めることができるサービス
+グローバルなチームや企業を対象している。
+
+## 概要
+翻訳 ✖️　チャット　✖️　管理
+三つの軸を掛け合わせることで、国際的な壁を低くでき高いパフォーマンスを出せると考えられる。
+
+
+## ローカルでの動作確認方法
+
+### インストールモジュール
 - pip
 - Django
 - requests
 
-## 実装コマンド
+### 実装コマンド
 ComPagno内のmanage.pyがあるディレクトリまで移動する
 manage.pyが存在するディレクトリで下記コマンドを実行する
 
 
-### 1.migrationの作成
+#### 1.migrationの作成
 ```bat
 python manage.py makemigrations app
 ```
@@ -19,19 +30,19 @@ migrationsファイルが作成される
 が残りもし設定を戻す事がある場合はここのファイルを参照する事で
 戻す事が可能となる
 
-### 2.データベースの作成
+#### 2.データベースの作成
 ```bat
 python manage.py migrate
 ```
 sqlite3のデータベースが作成される
 
-### 3.管理者ユーザーの作成
+#### 3.管理者ユーザーの作成
 ```bat
 python manage.py createsuperuser
 ```
 データベースの管理者の作成を行う
 
-### 4.サーバー起動
+#### 4.サーバー起動
 ```bat
 python manage.py runserver --noreload
 ```
@@ -39,7 +50,7 @@ python manage.py runserver --noreload
 "--noreload"オプションはサーバーロードを防ぐ為にある
 無くても良い。
 
-### 備考
+#### 備考
 ```bat
 python manage.py loaddata master_data/post_initial.json
 ```
