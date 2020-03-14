@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block customcss %}
+<style>
+  body {
+    padding-top: 0;
+  }
+
+  .line {
+    padding: 0;
+    margin-left: 10px;
+  }
+
+  .line: hover {
+    cursor: pointer;
+    opacity:0.5;
+  }
+
+  .back {
+    background-color: #03a9f40d;
+  }
+
+  .whe {
+    width: 25%;
+  }
+
+</style>
+{% endblock customcss %}
+
+
+{% block content %}
+<main role="main" class="container">
+    <main role="main" class="container">
+        <h3>各国の天気</h3>
+        <ul class="list-group list-group-horizontal-sm mb-4">
+          {% for weather in weather_info %}
+            <li class="list-group-item alert alert-success whe">
+            <h4>{{ weather.0 }}</h4>
+            <div>
+            <img src="{{ weather.1 }}">
+            </div>
+            </li>
+          {% endfor %}
+        </ul>
+        {% for task in task_list %}
+        <div class="jumbotron back">
+            <h1 class="border-bottom"> {{ task.0 }} </h1>
+            <p class="lead"> {{ task.1 }}</p>
+            <a class="btn btn-lg btn-primary" href="#" role="button">詳細へ &raquo;</a>
+            <form method="POST" action="{% url 'post_line_message' %}" style="display: inline"> {% csrf_token %}
+            <input height="50" value="" type="image" src="/media/line_images/wide-default.png" class="btn btn-lg line" alt="lineボタン"/>
+            <input type="hidden" value="{{ task.0 }}" name="line_title">
+            <input type="hidden" value="{{ task.1 }}" name="line_message">
+            </form>
+        </div>
+        {% empty %}
+        <div class="alert alert-success" role="alert">
+            <h1>タスクはありません。</h1>
+        </div>
+        {% endfor %}
+    </main>
+</main>
+{% endblock content%}
+{% block js_area %}
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+{% endblock js_area %}
